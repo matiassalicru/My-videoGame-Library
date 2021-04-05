@@ -28,6 +28,8 @@ export default async (req, res) => {
       for (let i = 0; i < res.data.length; i++) {
         data.push(res.data[i]);
       }
+
+      console.log('funciona la api');
     })
     .catch((e) => {
       console.log(e);

@@ -1,10 +1,12 @@
 import Head from "next/head";
 import { Nav } from "./components/Nav";
-import { GamesGrid } from './components/GamesGrid'
+import { GamesGrid } from "./components/GamesGrid";
 
-import '../helpers/fontAwesome'
+import "../helpers/fontAwesome";
+import { useState } from "react";
 
-export default function Home() {
+export default function Home({covers}) {
+
   return (
     <div>
       <Head>
@@ -15,9 +17,23 @@ export default function Home() {
           content="A library where you can look for games that you want to play or have played already to add to some lists you can have"
         />
       </Head>
-      <Nav/>
-      <GamesGrid/>
-      
+      <Nav />
+      <GamesGrid covers={covers} />
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const res = await fetch(`http://localhost:3000/api/covers`);
+  const covers = await res.json();
+
+  if (!covers) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: { covers }, // will be passed to the page component as props
+  };
 }

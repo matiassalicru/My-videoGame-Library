@@ -1,7 +1,13 @@
-export const GamesGrid = () => {
+
+export const GamesGrid = ({covers}) => {
+  console.log(covers);
   return (
-    <div className="gamesGrid_main">
-      I'm a grid of games, still in development      
+    <div>
+      {covers.map( cover => (
+        <img key={cover.id} src={cover.url}/>
+      ))}
     </div>
   )
 }
+
+
