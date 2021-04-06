@@ -1,6 +1,5 @@
 
 export const GamesGrid = ({covers}) => {
-  console.log(covers);
   return (
     <div>
       {covers.map( cover => (

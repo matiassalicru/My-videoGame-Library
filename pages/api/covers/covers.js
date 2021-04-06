@@ -13,7 +13,7 @@ if (envFound) {
 }
 
 export default async (req, res) => {
-  const data = [];
+  const covers = [];
 
   await axios({
     url: "https://api.igdb.com/v4/covers",
@@ -22,18 +22,18 @@ export default async (req, res) => {
       "Client-ID": "gillmyg4he2iqgf9dxmlpn97f7em22",
       Authorization: `${auth}`,
     },
-    data: "fields game,height,image_id,url,width; limit 100;",
+    data: "fields game,height,image_id,url,width; ",
   })
     .then((res) => {
       for (let i = 0; i < res.data.length; i++) {
-        data.push(res.data[i]);
+        covers.push(res.data[i]);
       }
 
-      console.log('funciona la api');
+      console.log("funciona la api");
     })
     .catch((e) => {
       console.log(e);
     });
 
-  res.status(200).json(data);
+  res.status(200).json(covers);
 };

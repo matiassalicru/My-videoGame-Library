@@ -1,11 +1,14 @@
 import Head from "next/head";
-import { Nav } from "./components/Nav";
-import { GamesGrid } from "./components/GamesGrid";
+import { Nav } from "../components/Nav";
+import { GamesGrid } from "../components/GamesGrid";
 
 import "../helpers/fontAwesome";
-import { useState } from "react";
+import { fetches } from "../helpers/fetcher";
 
-export default function Home({covers}) {
+export default function Home() {
+  const { cover, error } = fetches();
+
+  if (cover || error) console.log(cover, error);
 
   return (
     <div>
@@ -18,22 +21,22 @@ export default function Home({covers}) {
         />
       </Head>
       <Nav />
-      <GamesGrid covers={covers} />
+      {!cover ? <div>Loading...</div> : <GamesGrid covers={cover} />}
     </div>
   );
 }
 
-export async function getStaticProps() {
-  const res = await fetch(`http://localhost:3000/api/covers`);
-  const covers = await res.json();
+// export async function getStaticProps() {
+//   const res = await fetch(`http://localhost:3000/api/fetches.covers`);
+//   const fetches.covers = await res.json();
 
-  if (!covers) {
-    return {
-      notFound: true,
-    };
-  }
+//   if (!fetches.covers) {
+//     return {
+//       notFound: true,
+//     };
+//   }
 
-  return {
-    props: { covers }, // will be passed to the page component as props
-  };
-}
+//   return {
+//     props: { fetches.covers }, // will be passed to the page component as props
+//   };
+// }
