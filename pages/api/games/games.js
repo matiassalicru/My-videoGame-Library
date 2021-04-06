@@ -13,6 +13,7 @@ if (envFound) {
 }
 
 export default async (req, res) => {
+  
   const games = [];
 
   await axios({
@@ -22,10 +23,10 @@ export default async (req, res) => {
       "Client-ID": "gillmyg4he2iqgf9dxmlpn97f7em22",
       Authorization: `${auth}`,
     },
-    games: "fields *;",
+    data: `fields *;`,
   })
     .then((res) => {
-      for (let i = 0; i < res.games.length; i++) {
+      for (let i = 0; i < res.data.length; i++) {
         games.push(res.games[i]);
       }
 

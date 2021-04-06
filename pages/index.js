@@ -1,12 +1,16 @@
 import Head from "next/head";
-import { Nav } from "../components/Nav";
-import { GamesGrid } from "../components/GamesGrid";
 
-import "../helpers/fontAwesome";
+// Components
+import { GamesGrid } from "../components/GamesGrid";
+import { Nav } from "../components/Nav";
+
+// Helpers
 import { fetches } from "../helpers/fetcher";
+import "../helpers/fontAwesome";
 
 export default function Home() {
-  const { cover, error } = fetches();
+  const { cover, error } = fetches('covers', 'covers');
+
 
   if (cover || error) console.log(cover, error);
 
@@ -25,18 +29,3 @@ export default function Home() {
     </div>
   );
 }
-
-// export async function getStaticProps() {
-//   const res = await fetch(`http://localhost:3000/api/fetches.covers`);
-//   const fetches.covers = await res.json();
-
-//   if (!fetches.covers) {
-//     return {
-//       notFound: true,
-//     };
-//   }
-
-//   return {
-//     props: { fetches.covers }, // will be passed to the page component as props
-//   };
-// }

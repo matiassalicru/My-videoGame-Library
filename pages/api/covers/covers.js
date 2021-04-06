@@ -15,6 +15,8 @@ if (envFound) {
 export default async (req, res) => {
   const covers = [];
 
+  console.log(req);
+
   await axios({
     url: "https://api.igdb.com/v4/covers",
     method: "POST",

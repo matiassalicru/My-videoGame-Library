@@ -1,12 +1,20 @@
+export const GamesGrid = ({ covers }) => {
 
-export const GamesGrid = ({covers}) => {
+  const ids = [];
+
+  for (let i = 0; i < covers.length; i++) {
+    ids.push(covers[i].game);
+  }
+
+  console.log(ids);
+
   return (
-    <div>
-      {covers.map( cover => (
-        <img key={cover.id} src={cover.url}/>
+    <div className="games_pin-container">
+      {covers.map((cover) => (
+        <div className="card" key={cover.id}>
+          <img src={cover.url} />
+        </div>
       ))}
     </div>
-  )
-}
-
-
+  );
+};
