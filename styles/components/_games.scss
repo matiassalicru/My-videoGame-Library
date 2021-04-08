@@ -1,6 +1,7 @@
 .games_pin-container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   column-gap: 5px;
   row-gap: 5px;
   margin: 0;
@@ -22,12 +23,13 @@
       color: #fafafa;
       z-index: 999;
       padding: 5px 10px;
+      margin: 0px 10px;
       background: #31313155;
       border-radius: 20px;
     }
   }
   .game__cover {
-    width: 100%;
+    width: 200px;
     z-index: 10;
     height: 100%;
     transition: all 0.3s ease-in-out;
