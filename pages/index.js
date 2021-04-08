@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 // Components
-import { GamesGrid } from "../components/GamesGrid";
+import { Grid } from "../components/Grid";
 
 // Helpers
 import "../helpers/fontAwesome";
@@ -17,7 +17,7 @@ export default function Home() {
           content="A library where you can look for games that you want to play or have played already to add to some lists you can have"
         />
       </Head>
-      <GamesGrid />
+      <Grid />
     </div>
   );
 }
