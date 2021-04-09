@@ -16,3 +16,12 @@ a {
   text-decoration: none;
   color: blue;
 }
+
+.btn {
+  padding: 10px 15px;
+  border: 1px solid $color-primary;
+  background: transparent;
+  border-radius: 7px;
+  cursor: pointer;
+  margin: 10px;
+}

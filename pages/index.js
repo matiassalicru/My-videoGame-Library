@@ -3,15 +3,9 @@ import Head from "next/head";
 // Components
 import { Grid } from "../components/Grid";
 
-// Helpers
-import "../helpers/fontAwesome";
-
 export default function Home() {
-  const scroll = (e) => {
-    console.log(e.target);
-  }
   return (
-    <div onScroll={e => scroll(e)}>
+    <div>
       <Head>
         <title>My game library</title>
         <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
@@ -21,6 +15,6 @@ export default function Home() {
         />
       </Head>
       <Grid />
-    </div>  
+    </div>
   );
 }

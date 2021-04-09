@@ -1,4 +1,11 @@
-.games_pin-container {
+.games__main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.games__pin_container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -8,6 +15,7 @@
   margin-top: 20px;
   padding: 0 100px;
   box-sizing: border-box;
+  justify-content: center;
   max-width: 100%;
 }
 
@@ -16,24 +24,29 @@
   display: flex;
   justify-content: center;
   cursor: pointer;
-  align-items: flex-start;
+  align-items: center;
+  width: 350px;
+  height: 100%;
+
+  .game__title {
+    padding: 5px 10px;
+    margin: 10px 10px;
+    font-size: 0.9em;
+  }
 
   &:hover {
     .game__title {
       color: #fafafa;
       z-index: 999;
-      padding: 5px 10px;
-      margin: 0px 10px;
       background: #31313155;
       border-radius: 20px;
     }
   }
   .game__cover {
-    width: 200px;
+    width: 100%;
     z-index: 10;
-    height: 100%;
+    border-radius: 10px;
     transition: all 0.3s ease-in-out;
-
 
     &:hover {
       opacity: 0.5;
