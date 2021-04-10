@@ -1,14 +1,12 @@
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchGame } from "../../../store/actions/gameAction";
 
 export default function index() {
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    fetch(
-      `https://api.rawg.io/api/games?key=71dd6ebf64e741a8901130bd575a6dcb&page_size=30&page=1`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data.results[1]);
-      });
+    dispatch(fetchGame(4200));
   }, []);
 
   return (
