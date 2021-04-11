@@ -2,6 +2,7 @@ import {types} from "../types";
 
 const initialState = {
   game: "",
+  description: "",
   cover: "",
 };
 
@@ -11,7 +12,8 @@ export const gameReducer = (state = initialState, action) => {
       return {
         ...state,
         game: action.payload.name,
-        cover: action.payload.description,
+        description: action.payload.description,
+        cover: action.payload.background_image
       };
 
     default:
