@@ -1,20 +1,17 @@
-import {types} from "../types";
+import { types } from "../types";
 
-const initialState = {
-  game: "",
-  description: "",
-  cover: "",
-};
-
-export const gameReducer = (state = initialState, action) => {
+export const gameReducer = (state = {}, action) => {
   switch (action.type) {
     case types.getGame:
       return {
         ...state,
         game: action.payload.name,
         description: action.payload.description,
-        cover: action.payload.background_image
+        cover: action.payload.background_image,
       };
+
+    case types.cleanGame:
+      return {};
 
     default:
       return state;

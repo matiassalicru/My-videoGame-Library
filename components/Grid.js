@@ -9,11 +9,10 @@ export const Grid = () => {
   // Trae de la API juegos con un máximo de 20 por página.
   useEffect(() => {
     fetch(
-      `https://api.rawg.io/api/games?key=71dd6ebf64e741a8901130bd575a6dcb&page_size=30&page=${pageNumber}`
+      `https://api.rawg.io/api/games?key=71dd6ebf64e741a8901130bd575a6dcb&page_size=10&page=${pageNumber}`
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.results[1]);
         return setGamesList(data.results);
       });
   }, [pageNumber]);

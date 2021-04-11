@@ -5,10 +5,15 @@ export const fetchGame = (id) => async (dispatch) => {
     https://api.rawg.io/api/games/${id}`)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       dispatch({
         type: types.getGame,
-        payload: data
-      })
+        payload: data,
+      });
     });
+};
+
+export const cleanUp = () => {
+  return {
+    type: types.cleanGame,
+  };
 };

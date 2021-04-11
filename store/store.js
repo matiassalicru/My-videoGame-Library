@@ -3,11 +3,39 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./reducers/rootReducer";
 
+const middleware = [thunk];
 
+function saveToLocalStorage(state) {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem("state", serializedState);
+  } catch (e) {
+    console.log(e);
+  }
+}
 
-const initialState = {};
-const middleware = [thunk] ;
+function loadFromLocalStorage() {
+  if (typeof window !== "undefined") {
+    try {
+      const serializedState = localStorage.getItem("state");
+      console.log(serializedState);
+      if (serializedState === null) return undefined;
+      return JSON.parse(serializedState);
+    } catch (e) {
+      console.log(e);
+      return undefined;
+    }
+  }
+}
 
-const store = createStore(rootReducer, initialState, composeWithDevTools(applyMiddleware(...middleware)))
+const persistedState = loadFromLocalStorage();
+
+const store = createStore(
+  rootReducer,
+  persistedState,
+  composeWithDevTools(applyMiddleware(...middleware))
+);
+
+store.subscribe(() => saveToLocalStorage(store.getState("game")));
 
 export default store;
