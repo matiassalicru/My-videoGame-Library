@@ -23,22 +23,32 @@ export default function index() {
     };
   }, []);
 
+  const addToList = (list) => {
+    alert(`Game added to ${list} list`)
+  }
+
   return (
-    <div>
+    <>
       {isGameAvailable ? (
-        <>
-          <h1 className="game__title">{gameSelected.game}</h1>
-          <p
-            className="game__parag"
-            dangerouslySetInnerHTML={{ __html: gameSelected.description }}
-          ></p>
-          <img className="game__image" src={gameSelected.cover} alt="cover" />
-        </>
+        <div className="game__main">
+          <div className="game__image">
+            <img src={gameSelected.cover} alt="cover" />
+          </div>
+          <div className="game__info">
+            <h1 className="game__title">{gameSelected.game}</h1>
+            <p
+              className="game__parag"
+              dangerouslySetInnerHTML={{ __html: gameSelected.description }}
+            ></p>
+            <button onClick={() => addToList("done")} className="btn">Add to my done list</button>
+            <button onClick={() => addToList("toPlay")} className="btn">Add to my to play list</button>
+          </div>
+        </div>
       ) : (
         <div className="loading">
           <Loading />
         </div>
       )}
-    </div>
+    </>
   );
 }

@@ -8,8 +8,16 @@ export const Nav = () => {
         <li className="nav_li">
           <Link href="/">Games</Link>
         </li>
-        <li className="nav_li">Search</li>
-        <li className="nav_li">Profile</li>
+        <li className="nav_li">
+          <Link href="/">
+            Search
+          </Link>
+        </li>
+        <li className="nav_li">
+          <Link href="/">
+            Profile
+          </Link>
+        </li>
       </ul>
     </nav>
   );

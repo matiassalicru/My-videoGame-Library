@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { GamePin } from "./GamePin";
 import MasonryLayout from "./MasonryLayout";
+import Loading from "../Assets/puff.js";
+
 
 export const Grid = () => {
   const [loading, setLoading] = useState(true);
@@ -41,7 +43,7 @@ export const Grid = () => {
           </button>
         </div>
       ) : (
-        <div className="loading"> Loading... </div>
+        <div className="loading"> <Loading/> </div>
       )}
     </>
   );
