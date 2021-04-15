@@ -12,6 +12,8 @@ export const fetchGame = (id) => async (dispatch) => {
     });
 };
 
+
+
 export const cleanUp = () => {
   return {
     type: types.cleanGame,

@@ -1,9 +1,16 @@
 import Head from "next/head";
+import { useEffect } from "react";
 
 // Components
-import { Grid } from "../components/Grid";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace("/games");
+  }, []);
+
   return (
     <div>
       <Head>
@@ -14,7 +21,6 @@ export default function Home() {
           content="A library where you can look for games that you want to play or have played already to add to some lists you can have"
         />
       </Head>
-      <Grid />
     </div>
   );
 }

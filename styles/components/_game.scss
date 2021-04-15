@@ -2,7 +2,10 @@
   display: flex;
   flex-wrap: nowrap;
   align-items: flex-start;
-  margin: 2em 4em;
+  margin: 0 4em 2em 4em;
+  padding-top: 2em;
+  padding-left: 4em;
+  padding-bottom: 4em;
 
   .game__info {
     display: flex;
@@ -14,6 +17,7 @@
     border-radius: 20px;
     box-shadow: 1px 1px 4px 2px #d8d8d8;
     height: 100vh;
+    width: 100%;
 
     .game__title {
       text-align: center;
@@ -36,16 +40,24 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 80%;
     height: 100%;
     padding: 0 20px;
     background-color: #32323220;
     border-radius: 10px;
     box-shadow: 1px 1px 4px 2px #d8d8d8;
 
+    h3{
+      margin: 5px 0;
+    }
+
+    p{
+      font-weight: 400;
+    }
+
     img {
       width: 100%;
-      margin: 100px;
+      margin: 20px 100px ;
       border-radius: 10px;
     }
   }

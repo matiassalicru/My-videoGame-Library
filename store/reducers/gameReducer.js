@@ -8,6 +8,7 @@ export const gameReducer = (state = {}, action) => {
         game: action.payload.name,
         description: action.payload.description,
         cover: action.payload.background_image,
+        release_date: action.payload.released
       };
 
     case types.cleanGame:

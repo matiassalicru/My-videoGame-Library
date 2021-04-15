@@ -3,16 +3,15 @@ import { GamePin } from "./GamePin";
 import MasonryLayout from "./MasonryLayout";
 import Loading from "../Assets/puff.js";
 
-
 export const Grid = () => {
   const [loading, setLoading] = useState(true);
   const [gamesList, setGamesList] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
 
-  // Trae de la API juegos con un máximo de 10 por página.
+  // Trae de la API juegos con un máximo de 10 por página. RAFACTORIZAR
   useEffect(() => {
     fetch(
-      `https://api.rawg.io/api/games?key=71dd6ebf64e741a8901130bd575a6dcb&page_size=10&page=${pageNumber}`
+      `https://api.rawg.io/api/games?key=71dd6ebf64e741a8901130bd575a6dcb&page_size=15&page=${pageNumber}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -20,6 +19,12 @@ export const Grid = () => {
         return setGamesList(data.results);
       });
   }, [pageNumber]);
+
+  const prevPage = () => {
+    if (pageNumber > 1) {
+      setPageNumber(pageNumber - 1);
+    }
+  };
 
   return (
     <>
@@ -29,21 +34,27 @@ export const Grid = () => {
             {gamesList &&
               gamesList.map((game) => <GamePin key={game.id} game={game} />)}
           </MasonryLayout>
-          <button onClick={() => setPageNumber(pageNumber - 1)}>
+          <button
+            className={pageNumber <= 1 ? "btn-disabled" : "btn"}
+            disabled={pageNumber <= 1}
+            onClick={prevPage}
+          >
             Prev Page
           </button>
           <button
+            className="btn"
             onClick={() => {
-              setLoading(true);
               setPageNumber(pageNumber + 1);
-              setLoading(false);
             }}
           >
             Next Page
           </button>
         </div>
       ) : (
-        <div className="loading"> <Loading/> </div>
+        <div className="loading">
+          {" "}
+          <Loading />{" "}
+        </div>
       )}
     </>
   );

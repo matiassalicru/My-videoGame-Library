@@ -1,24 +1,44 @@
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { loading, NotLoading, searchGame } from "../store/actions/searchAction";
 
 export const Nav = () => {
+  const [search, setSearch] = useState("");
+  const router = useRouter();
+  const dispatch = useDispatch();
+
+  const handleInputChange = (e) => {
+    console.log(e.target.value);
+
+    setSearch(e.target.value);
+  };
+
+  // useEffect(() => {
+  // dispatch(searchGame(search));
+  // }, [search]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(searchGame(search));
+    router.replace("/search");
+  };
+
   return (
     <nav className="nav_main">
-      <ul className="nav_ul">
-        <li className="nav_li">
-          <Link href="/">Games</Link>
-        </li>
-        <li className="nav_li">
-          <Link href="/">
-            Search
-          </Link>
-        </li>
-        <li className="nav_li">
-          <Link href="/">
-            Profile
-          </Link>
-        </li>
-      </ul>
+      <form onSubmit={handleSubmit}>
+        <label>
+          <FontAwesomeIcon icon={faSearch} />
+          <input
+            required
+            type="text"
+            placeholder="Search..."
+            onChange={handleInputChange}
+          />
+        </label>
+      </form>
     </nav>
   );
 };

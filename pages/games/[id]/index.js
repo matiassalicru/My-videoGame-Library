@@ -24,8 +24,8 @@ export default function index() {
   }, []);
 
   const addToList = (list) => {
-    alert(`Game added to ${list} list`)
-  }
+    alert(`Game added to ${list} list`);
+  };
 
   return (
     <>
@@ -33,6 +33,8 @@ export default function index() {
         <div className="game__main">
           <div className="game__image">
             <img src={gameSelected.cover} alt="cover" />
+            <h3>Released date</h3>
+            <p>{gameSelected.release_date}</p>
           </div>
           <div className="game__info">
             <h1 className="game__title">{gameSelected.game}</h1>
@@ -40,8 +42,12 @@ export default function index() {
               className="game__parag"
               dangerouslySetInnerHTML={{ __html: gameSelected.description }}
             ></p>
-            <button onClick={() => addToList("done")} className="btn">Add to my done list</button>
-            <button onClick={() => addToList("toPlay")} className="btn">Add to my to play list</button>
+            <button onClick={() => addToList("done")} className="btn">
+              Add to my done list
+            </button>
+            <button onClick={() => addToList("toPlay")} className="btn">
+              Add to my to play list
+            </button>
           </div>
         </div>
       ) : (
