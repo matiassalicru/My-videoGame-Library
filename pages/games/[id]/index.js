@@ -7,7 +7,7 @@ export default function index() {
   const dispatch = useDispatch();
   const [isGameAvailable, setIsGameAvailable] = useState(false);
 
-  const gameSelected = useSelector((state) => state.game);
+  const gameSelected = useSelector((state) => state.game.game);
 
   useEffect(() => {
     if (Object.entries(gameSelected).length !== 0) {
@@ -32,12 +32,14 @@ export default function index() {
       {isGameAvailable ? (
         <div className="game__main">
           <div className="game__image">
-            <img src={gameSelected.cover} alt="cover" />
+            <img src={gameSelected.background_image} alt="cover" />
             <h3>Released date</h3>
-            <p>{gameSelected.release_date}</p>
+            <p>{gameSelected.released}</p>
+            <h3>Metacritic Score</h3>
+            <p>{gameSelected.metacritic}</p>
           </div>
           <div className="game__info">
-            <h1 className="game__title">{gameSelected.game}</h1>
+            <h1 className="game__title">{gameSelected.name}</h1>
             <p
               className="game__parag"
               dangerouslySetInnerHTML={{ __html: gameSelected.description }}

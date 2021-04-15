@@ -2,7 +2,7 @@ import { types } from "../types";
 
 const initialState = {
   loading: false,
-  results: "",
+  results: null,
 };
 
 export const searchReducer = (state = initialState, action) => {
@@ -11,6 +11,12 @@ export const searchReducer = (state = initialState, action) => {
       return {
         ...state,
         results: action.payload,
+      };
+
+    case types.cleanSearch:
+      return {
+        ...state,
+        results: initialState.results,
       };
 
     case types.isLoading:

@@ -11,10 +11,10 @@ export const Nav = () => {
   const dispatch = useDispatch();
 
   const handleInputChange = (e) => {
-    console.log(e.target.value);
-
     setSearch(e.target.value);
   };
+
+  //PREVIEW DE BUSQUEDA TODO!!!!!1111111111111
 
   // useEffect(() => {
   // dispatch(searchGame(search));

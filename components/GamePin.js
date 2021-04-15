@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { useDispatch } from "react-redux";
-import { fetchGame } from '../store/actions/gameAction';
+import { fetchGame } from "../store/actions/gameAction";
 
 export const GamePin = ({ game }) => {
   const dispatch = useDispatch();
@@ -13,8 +13,9 @@ export const GamePin = ({ game }) => {
   return (
     <Link href={`/games/${id}`} as={`/games/${slug}`}>
       <div className="games_pin" onClick={getGame}>
-        <h3 className="game__title">{name}</h3>
-        <img className="game__cover" src={cover} alt="cover" />
+        <h3 className="games__title">{name}</h3>
+        <img className="games__cover" src={cover} alt="cover" />
+        <p className="games__name">{name}</p>
       </div>
     </Link>
   );

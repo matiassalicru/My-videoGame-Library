@@ -16,6 +16,12 @@ export const searchGame = (search) => async (dispatch) => {
     });
 };
 
+export const cleanSearch = () => {
+  return {
+    type: types.cleanSearch,
+  };
+};
+
 export const loading = () => {
   return {
     type: types.isLoading,

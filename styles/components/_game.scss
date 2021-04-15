@@ -14,9 +14,11 @@
     align-items: center;
     background-color: #32323220;
     margin: 0 20px;
+    padding-bottom: 20px;
     border-radius: 20px;
     box-shadow: 1px 1px 4px 2px #d8d8d8;
-    height: 100vh;
+    // min-height: 100vh;
+    height: 100%;
     width: 100%;
 
     .game__title {
@@ -47,17 +49,17 @@
     border-radius: 10px;
     box-shadow: 1px 1px 4px 2px #d8d8d8;
 
-    h3{
+    h3 {
       margin: 5px 0;
     }
 
-    p{
+    p {
       font-weight: 400;
     }
 
     img {
       width: 100%;
-      margin: 20px 100px ;
+      margin: 20px 100px;
       border-radius: 10px;
     }
   }

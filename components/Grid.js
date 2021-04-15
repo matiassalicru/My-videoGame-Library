@@ -2,22 +2,18 @@ import { useEffect, useState } from "react";
 import { GamePin } from "./GamePin";
 import MasonryLayout from "./MasonryLayout";
 import Loading from "../Assets/puff.js";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchGamesList } from "../store/actions/gameAction";
 
 export const Grid = () => {
-  const [loading, setLoading] = useState(true);
-  const [gamesList, setGamesList] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
+  const dispatch = useDispatch();
+  const gamesList = useSelector((state) => state.game.games);
+  const loading = useSelector((state) => state.search.loading);
 
   // Trae de la API juegos con un máximo de 10 por página. RAFACTORIZAR
   useEffect(() => {
-    fetch(
-      `https://api.rawg.io/api/games?key=71dd6ebf64e741a8901130bd575a6dcb&page_size=15&page=${pageNumber}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setLoading(false);
-        return setGamesList(data.results);
-      });
+    dispatch(fetchGamesList(pageNumber));
   }, [pageNumber]);
 
   const prevPage = () => {
@@ -30,7 +26,7 @@ export const Grid = () => {
     <>
       {!loading ? (
         <div className="games__pin_container">
-          <MasonryLayout columns={3} gap={7}>
+          <MasonryLayout columns={3} gap={2}>
             {gamesList &&
               gamesList.map((game) => <GamePin key={game.id} game={game} />)}
           </MasonryLayout>
@@ -52,8 +48,7 @@ export const Grid = () => {
         </div>
       ) : (
         <div className="loading">
-          {" "}
-          <Loading />{" "}
+          <Loading />
         </div>
       )}
     </>

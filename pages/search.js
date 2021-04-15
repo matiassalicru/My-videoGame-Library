@@ -1,21 +1,27 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { GamePin } from "../components/GamePin";
 import MasonryLayout from "../components/MasonryLayout";
 import Loading from "../Assets/puff.js";
+import { cleanSearch } from "../store/actions/searchAction";
 
 const search = () => {
   const search = useSelector((state) => state.search.results);
   const loading = useSelector((state) => state.search.loading);
+  const dispatch = useDispatch();
 
-  const [gamesSearched, setGamesSearched] = useState([search]);
+  const [gamesSearched, setGamesSearched] = useState(search);
 
   useEffect(() => {
     !loading && setGamesSearched(search);
-    console.log(gamesSearched);
   }, [loading]);
 
-  console.log(search);
+  useEffect(() => {
+    return () => {
+      dispatch(cleanSearch());
+    };
+  }, []);
+
   return (
     <div className="games__pin_container">
       {!loading ? (
