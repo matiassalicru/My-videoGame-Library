@@ -47,7 +47,7 @@ export const Sidebar = () => {
       ) : (
         <ul className="sidebar__text-list">
           <li className="sidebar__list-item">
-            <Link href="/games">Games</Link>
+            <Link href="/games/1">Games</Link>
           </li>
           <li className="sidebar__list-item">
             <Link href="/">My lists</Link>

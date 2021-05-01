@@ -2,25 +2,35 @@ import { useEffect, useState } from "react";
 import { GamePin } from "./GamePin";
 import MasonryLayout from "./MasonryLayout";
 import Loading from "../Assets/puff.js";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchGamesList } from "../store/actions/gameAction";
+import {useDispatch, useSelector } from "react-redux";
+import { useRouter } from "next/router";
+import { previousPage, nextPage } from "../store/actions/gameAction";
 
-export const Grid = () => {
-  const [pageNumber, setPageNumber] = useState(1);
+
+const Grid = ({gamesList}) => {
+  const router = useRouter();
   const dispatch = useDispatch();
-  const gamesList = useSelector((state) => state.game.games);
+  const pageNumber = useSelector((state) => state.game.pageNumber);
   const loading = useSelector((state) => state.search.loading);
+
+  // console.log(data);
+  // console.log(gamesList);
 
   // Trae de la API juegos con un máximo de 10 por página. RAFACTORIZAR
   useEffect(() => {
-    dispatch(fetchGamesList(pageNumber));
+    router.push(`/games/${pageNumber}`)
   }, [pageNumber]);
 
   const prevPage = () => {
     if (pageNumber > 1) {
-      setPageNumber(pageNumber - 1);
+      dispatch(previousPage())
     }
   };
+
+  const nextPages = () => {
+    dispatch(nextPage())
+  };
+
 
   return (
     <>
@@ -39,9 +49,7 @@ export const Grid = () => {
           </button>
           <button
             className="btn"
-            onClick={() => {
-              setPageNumber(pageNumber + 1);
-            }}
+            onClick={nextPages}
           >
             Next Page
           </button>
@@ -54,3 +62,6 @@ export const Grid = () => {
     </>
   );
 };
+
+
+export default Grid

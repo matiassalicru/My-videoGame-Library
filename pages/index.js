@@ -7,9 +7,9 @@ import { useRouter } from "next/router";
 export default function Home() {
   const router = useRouter();
 
-  useEffect(() => {
-    router.replace("/games");
-  }, []);
+  // useEffect(() => {
+    // router.push("/games/:pagenumber");
+  // }, []);
 
   return (
     <div>

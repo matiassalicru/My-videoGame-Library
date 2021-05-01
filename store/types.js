@@ -7,4 +7,7 @@ export const types = {
   isLoading: "[LOADING] loading something",
   isNotLoading: "[LOADING] Not loading something",
   cleanSearch: "[SEARCH] clean search results",
+  nextPage: '[PAGE] nextPage',
+  previousPage: '[PAGE] previousPage',
+
 };

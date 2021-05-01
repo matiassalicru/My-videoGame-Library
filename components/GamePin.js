@@ -11,7 +11,7 @@ export const GamePin = ({ game }) => {
   };
 
   return (
-    <Link href={`/games/${id}`} as={`/games/${slug}`}>
+    <Link href={`/game/${id}`} as={`/game/${slug}`}>
       <div className="games_pin" onClick={getGame}>
         <h3 className="games__title">{name}</h3>
         <img className="games__cover" src={cover} alt="cover" />

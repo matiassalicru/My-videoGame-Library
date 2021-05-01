@@ -3,6 +3,7 @@ import { types } from "../types";
 const initialState = {
   games: null,
   game: null,
+  pageNumber: 1
 };
 
 export const gameReducer = (state = initialState, action) => {
@@ -24,6 +25,18 @@ export const gameReducer = (state = initialState, action) => {
         ...state,
         game: {},
       };
+
+    case types.nextPage:
+      return {
+        ...state,
+        pageNumber: state.pageNumber + 1,
+      }
+
+    case types.previousPage:
+      return {
+        ...state,
+        pageNumber: state.pageNumber - 1,
+      }
 
     default:
       return state;
